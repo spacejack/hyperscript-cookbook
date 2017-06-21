@@ -175,9 +175,9 @@ h(myComponent, {name: 'Zeke'})
 *Hyperscript:*
 
 ```javascript
-m('div',
-    m(myComponent, {name: 'Zeke'},
-        m(myChildComponent)
+h('div',
+    h(myComponent, {name: 'Zeke'},
+        h(myChildComponent)
     )
 )
 ```
@@ -221,7 +221,7 @@ isActive && h('div', 'Is active')
 
 ```javascript
 h('div', isAlive
-    ? m('p.green', 'The hero is alive.')
+    ? h('p.green', 'The hero is alive.')
     : h('p.red', 'The hero is dead.')
 )
 ```
@@ -278,5 +278,5 @@ h('div',
 *Hyperscript:*
 
 ```javascript
-m('p', `The hero's name is ${hero ? hero.name : ''}`)
+h('p', `The hero's name is ${hero ? hero.name : ''}`)
 ```
