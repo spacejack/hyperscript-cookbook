@@ -89,7 +89,7 @@ h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
 *Hyperscript:*
 
 ```javascript
-h('button', {onclick: deleteHero}, 'Delete hero')
+h('button', {onclick(){deleteHero()}}, 'Delete hero')
 ```
 
 ## Iteration
