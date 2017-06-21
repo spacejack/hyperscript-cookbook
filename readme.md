@@ -63,7 +63,7 @@ h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
 h('button', {onclick: deleteHero}, 'Delete hero')
 ```
 
-###  Iteration
+### Iteration
 
 *Angular:*
 
@@ -77,7 +77,7 @@ h('button', {onclick: deleteHero}, 'Delete hero')
 heroes.map(hero => h('div', hero.name))
 ```
 
-###  Iteration with index
+### Iteration with index
 
 *Angular:*
 
@@ -103,6 +103,27 @@ heroes.map((hero, i) => h('div', `${i + 1} - ${hero.name}`))
 h(myComponent, {name: 'Zeke'})
 ```
 
+### Nesting Components
+
+*Angular:*
+
+```html
+<div>
+    <myComponent [name]="Zeke">
+        <myChildComponent/>
+    </myComponent>
+</div>
+```
+
+*Hyperscript:*
+
+```javascript
+m('div',
+    m(myComponent, {name: 'Zeke'},
+        m(myChildComponent)
+    )
+)
+```
 
 ### `if`
 
@@ -112,7 +133,7 @@ h(myComponent, {name: 'Zeke'})
 <div *ngIf="isActive">Is active</div>
 ```
 
-*Javascript:*
+*Hyperscript:*
 
 ```javascript
 isActive && h('div', 'Is active')
@@ -128,8 +149,8 @@ isActive && h('div', 'Is active')
 
 ```javascript
 h('div', isAlive
-	? m('p.green', 'The hero is alive.')
-	: h('p.red', 'The hero is dead.')
+    ? m('p.green', 'The hero is alive.')
+    : h('p.red', 'The hero is dead.')
 )
 ```
 
@@ -139,10 +160,10 @@ h('div', isAlive
 
 ```html
 <div [ngSwitch]="hero.emotion">
-  <happy-hero *ngSwitchCase="'happy'" [hero]="hero"></happy-hero>
-  <sad-hero *ngSwitchCase="'sad'" [hero]="hero"></sad-hero>
-  <confused-hero *ngSwitchCase="'confused'" [hero]="hero"></confused-hero>
-  <unknown-hero *ngSwitchDefault [hero]="hero"></unknown-hero>
+    <happy-hero *ngSwitchCase="'happy'" [hero]="hero"></happy-hero>
+    <sad-hero *ngSwitchCase="'sad'" [hero]="hero"></sad-hero>
+    <confused-hero *ngSwitchCase="'confused'" [hero]="hero"></confused-hero>
+    <unknown-hero *ngSwitchDefault [hero]="hero"></unknown-hero>
 </div>
 ```
 
@@ -150,10 +171,10 @@ h('div', isAlive
 
 ```javascript
 h('div',
-	hero.emotion === 'happy' ? h(happyHero, {hero})
-	: hero.emotion === 'sad' ? h(sadHero, {hero})
-	: hero.emotion === 'confused' ? h(confusedHero, {hero})
-	: h(unknownHero, {hero})
+    hero.emotion === 'happy' ? h(happyHero, {hero})
+    : hero.emotion === 'sad' ? h(sadHero, {hero})
+    : hero.emotion === 'confused' ? h(confusedHero, {hero})
+    : h(unknownHero, {hero})
 )
 ```
 
