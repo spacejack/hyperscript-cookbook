@@ -253,10 +253,10 @@ isActive && h('div', 'Is active')
 *JSX:*
 
 ```
-<div>isAlive
+<div>isAlive {
     ? <p class="green">The hero is alive.</p>
     : <p class="red">The hero is dead.</p>
-</div>
+}</div>
 ```
 
 *Hyperscript:*
