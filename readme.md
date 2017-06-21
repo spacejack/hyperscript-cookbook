@@ -52,6 +52,46 @@ h('img', {src: heroImageUrl}),
 h('button', {disabled: isDisabled}, 'Button Text')
 ```
 
+## Classes
+
+*Angular:*
+
+```html
+<div class="article">Article</div>
+```
+
+*JSX:*
+
+```
+<div class="article">Article</div>
+```
+
+*Hyperscript:*
+
+```javascript
+h('.article', 'Article')
+```
+
+## Class Binding
+
+*Angular:*
+
+```html
+<div [class]="article">Article</div>
+```
+
+*JSX:*
+
+```
+<div class={article}>Article</div>
+```
+
+*Hyperscript:*
+
+```javascript
+h('div', {class: article}, 'Article')
+```
+
 ## Inline Style Binding
 
 *Angular:*
