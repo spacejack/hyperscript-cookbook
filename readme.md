@@ -2,7 +2,9 @@
 
 Below are several examples that might be helpful if you're familiar with Angular templates and are moving to JSX or hyperscrpt (AKA Javascript.)
 
-Hyperscript imlementations vary, but are fairly similar for the most part. In the examples below, the function `h()` represents the hyperscript function. (For example React's `React.createElement()` or Mithril's `m()`.)
+Hyperscript imlementations vary, but are fairly similar for the most part. In the examples below, the function `h()` represents the hyperscript function. (For example React's `React.createElement()` or [Mithril](https://mithril.js.org/)'s `m()`.)
+
+Note that when using hyperscript with React, the second parameter must always be the element attributes or component props (or null if none.) With Mithril, this parameter can be omitted. Examples below follow Mithril's convention.
 
 ## String Interpolation
 
