@@ -36,6 +36,19 @@ h('img', {src: heroImageUrl}),
 h('button', {disabled: isDisabled}, 'Button Text')
 ```
 
+### Inline Style Binding
+
+*Angular:*
+
+```html
+<div [style.color]="isSpecial ? 'red' : 'green'">The Hero</div>
+```
+
+*Hyperscript:*
+```javascript
+h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
+```
+
 ### Statements
 
 *Angular:*
@@ -78,18 +91,31 @@ heroes.map(hero => h('div', hero.name))
 heroes.map((hero, i) => h('div', `${i + 1} - ${hero.name}`))
 ```
 
+### Components
+
+*Angular:*
+
+```html
+<myComponent [name]="Zeke"></myComponent>
+```
+
+```javascript
+h(myComponent, {name: 'Zeke'})
+```
+
+
 ### `if`
 
 *Angular:*
 
 ```html
-<hero-detail *ngIf="isActive"></hero-detail>
+<div *ngIf="isActive">Is active</div>
 ```
 
 *Javascript:*
 
 ```javascript
-isActive && h('hero-detail')
+isActive && h('div', 'Is active')
 ```
 
 ### `if` ... `else`
@@ -112,11 +138,11 @@ h('div', isAlive
 *Angular:*
 
 ```html
-<div [ngSwitch]="currentHero.emotion">
-  <happy-hero *ngSwitchCase="'happy'" [hero]="currentHero"></happy-hero>
-  <sad-hero *ngSwitchCase="'sad'" [hero]="currentHero"></sad-hero>
-  <confused-hero *ngSwitchCase="'confused'" [hero]="currentHero"></confused-hero>
-  <unknown-hero *ngSwitchDefault [hero]="currentHero"></unknown-hero>
+<div [ngSwitch]="hero.emotion">
+  <happy-hero *ngSwitchCase="'happy'" [hero]="hero"></happy-hero>
+  <sad-hero *ngSwitchCase="'sad'" [hero]="hero"></sad-hero>
+  <confused-hero *ngSwitchCase="'confused'" [hero]="hero"></confused-hero>
+  <unknown-hero *ngSwitchDefault [hero]="hero"></unknown-hero>
 </div>
 ```
 
@@ -124,10 +150,10 @@ h('div', isAlive
 
 ```javascript
 h('div',
-	currentHero.emotion === 'happy' ? h('happy-hero')
-	: currentHero.emotion === 'sad' ? h('sad-hero')
-	: currentHero.emotion === 'confused' ? h('confused-hero')
-	: h('unknown-hero')
+	hero.emotion === 'happy' ? h(happyHero, {hero})
+	: hero.emotion === 'sad' ? h(sadHero, {hero})
+	: hero.emotion === 'confused' ? h(confusedHero, {hero})
+	: h(unknownHero, {hero})
 )
 ```
 
@@ -136,11 +162,11 @@ h('div',
 *Angular:*
 
 ```html
-<p>The current hero's name is {{currentHero?.name}}</p>
+<p>The hero's name is {{hero?.name}}</p>
 ```
 
 *Hyperscript:*
 
 ```javascript
-m('p', `The current hero's name is ${currentHero ? currentHero.name : ''}`)
+m('p', `The hero's name is ${hero ? hero.name : ''}`)
 ```
