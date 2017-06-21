@@ -17,7 +17,7 @@ Note that when using hyperscript with React, the second parameter must always be
 
 *JSX:*
 
-```
+```jsx
 <p>Hello, {user.firstName}</p>
 <p>1 + 1 = {1 + 1}</p>
 ```
@@ -40,7 +40,7 @@ h('p', `1 + 1 = ${1 + 1}`)
 
 *JSX:*
 
-```
+```jsx
 <img src={heroImageUrl}>
 <button disabled={isDisabled}>Button Text</button>
 ```
@@ -62,7 +62,7 @@ h('button', {disabled: isDisabled}, 'Button Text')
 
 *JSX:*
 
-```
+```jsx
 <div class="article">Article</div>
 ```
 
@@ -82,7 +82,7 @@ h('.article', 'Article')
 
 *JSX:*
 
-```
+```jsx
 <div class={article}>Article</div>
 ```
 
@@ -102,7 +102,7 @@ h('div', {class: article}, 'Article')
 
 *JSX:*
 
-```
+```jsx
 <div style={color: isSpecial ? 'red' : 'green'}>The Hero</div>
 ```
 
@@ -122,7 +122,7 @@ h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
 
 *JSX:*
 
-```
+```jsx
 <button onclick={deleteHero()}>Delete hero</button>
 ```
 
@@ -142,7 +142,7 @@ h('button', {onclick(){deleteHero()}}, 'Delete hero')
 
 *JSX:*
 
-```
+```jsx
 heroes.map(hero => <div>{hero.name}</div>)
 ```
 
@@ -162,7 +162,7 @@ heroes.map(hero => h('div', hero.name))
 
 *JSX:*
 
-```
+```jsx
 heroes.map((hero, i) => <div>{i + 1} - {hero.name}</div>)
 ```
 
@@ -182,7 +182,7 @@ heroes.map((hero, i) => h('div', `${i + 1} - ${hero.name}`))
 
 *JSX:*
 
-```
+```jsx
 <myComponent name="Zeke"/>
 ```
 
@@ -206,7 +206,7 @@ h(myComponent, {name: 'Zeke'})
 
 *JSX:*
 
-```
+```jsx
 <div>
     <myComponent name="Zeke">
         <myChildComponent/>
@@ -234,7 +234,7 @@ h('div',
 
 *JSX:*
 
-```
+```jsx
 isActive && <div>Is active</div>
 ```
 
@@ -252,7 +252,7 @@ isActive && h('div', 'Is active')
 
 *JSX:*
 
-```
+```jsx
 <div>{
     isAlive
     ? <p class="green">The hero is alive.</p>
@@ -284,7 +284,7 @@ h('div', isAlive
 
 *JSX:*
 
-```
+```jsx
 <div>{
     hero.emotion === 'happy' ? <happyHero hero={hero}/>
     : hero.emotion === 'sad' ? <sadHero hero={hero}/>
@@ -314,7 +314,7 @@ h('div',
 
 *JSX:*
 
-```
+```jsx
 <p>The hero's name is {hero ? hero.name : ''}</p>
 ```
 
