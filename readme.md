@@ -92,6 +92,8 @@ h('.article', 'Article')
 h('div', {class: article}, 'Article')
 ```
 
+Note that with React you must use `className`. Mithril will accept `class` or `className`.
+
 ## Inline Style Binding
 
 *Angular:*
