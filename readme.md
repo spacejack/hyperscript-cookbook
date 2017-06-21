@@ -4,13 +4,20 @@ Below are several examples that might be helpful if you're familiar with Angular
 
 Hyperscript imlementations vary, but are fairly similar for the most part. In the examples below, the function `h()` represents the hyperscript function. (For example React's `React.createElement()` or Mithril's `m()`.)
 
-### String Interpolation
+## String Interpolation
 
 *Angular:*
 
 ```html
 <p>Hello, {{user.firstName}}</p>
 <p>1 + 1 = {{1 + 1}}</p>
+```
+
+*JSX:*
+
+```
+<p>Hello, {user.firstName}</p>
+<p>1 + 1 = {1 + 1}</p>
 ```
 
 *Hyperscript:*
@@ -20,13 +27,20 @@ h('p', `Hello, ${user.firstName}`),
 h('p', `1 + 1 = ${1 + 1}`)
 ```
 
-### Property Binding
+## Property Binding
 
 *Angular:*
 
 ```html
 <img [src]="heroImageUrl">
 <button [disabled]="isDisabled">Button Text</button>
+```
+
+*JSX:*
+
+```
+<img src={heroImageUrl}>
+<button disabled={isDisabled}>Button Text</button>
 ```
 
 *Hyperscript:*
@@ -36,7 +50,7 @@ h('img', {src: heroImageUrl}),
 h('button', {disabled: isDisabled}, 'Button Text')
 ```
 
-### Inline Style Binding
+## Inline Style Binding
 
 *Angular:*
 
@@ -44,17 +58,30 @@ h('button', {disabled: isDisabled}, 'Button Text')
 <div [style.color]="isSpecial ? 'red' : 'green'">The Hero</div>
 ```
 
+*JSX:*
+
+```
+<div style={color: isSpecial ? 'red' : 'green'}>The Hero</div>
+```
+
 *Hyperscript:*
+
 ```javascript
 h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
 ```
 
-### Statements
+## Statements
 
 *Angular:*
 
 ```html
 <button (click)="deleteHero()">Delete hero</button>
+```
+
+*JSX:*
+
+```
+<button onclick={deleteHero()}>Delete hero</button>
 ```
 
 *Hyperscript:*
@@ -63,12 +90,18 @@ h('div', {style: {color: isSpecial ? 'red' : 'green'}}, 'The Hero')
 h('button', {onclick: deleteHero}, 'Delete hero')
 ```
 
-### Iteration
+## Iteration
 
 *Angular:*
 
 ```html
 <div *ngFor="let hero of heroes">{{hero.name}}</div>
+```
+
+*JSX:*
+
+```
+heroes.map(hero => <div>{hero.name}</div>)
 ```
 
 *Hyperscript:*
@@ -77,12 +110,18 @@ h('button', {onclick: deleteHero}, 'Delete hero')
 heroes.map(hero => h('div', hero.name))
 ```
 
-### Iteration with index
+## Iteration with index
 
 *Angular:*
 
 ```html
 <div *ngFor="let hero of heroes; let i=index">{{i + 1}} - {{hero.name}}</div>
+```
+
+*JSX:*
+
+```
+heroes.map((hero, i) => <div>{i + 1} - {hero.name}</div>)
 ```
 
 *Hyperscript:*
@@ -91,7 +130,7 @@ heroes.map(hero => h('div', hero.name))
 heroes.map((hero, i) => h('div', `${i + 1} - ${hero.name}`))
 ```
 
-### Components
+## Components
 
 *Angular:*
 
@@ -99,17 +138,35 @@ heroes.map((hero, i) => h('div', `${i + 1} - ${hero.name}`))
 <myComponent [name]="Zeke"></myComponent>
 ```
 
+*JSX:*
+
+```
+<myComponent name="Zeke"/>
+```
+
+*Hyperscript:*
+
 ```javascript
 h(myComponent, {name: 'Zeke'})
 ```
 
-### Nesting Components
+## Nesting Components
 
 *Angular:*
 
 ```html
 <div>
     <myComponent [name]="Zeke">
+        <myChildComponent/>
+    </myComponent>
+</div>
+```
+
+*JSX:*
+
+```
+<div>
+    <myComponent name="Zeke">
         <myChildComponent/>
     </myComponent>
 </div>
@@ -125,12 +182,18 @@ m('div',
 )
 ```
 
-### `if`
+## `if`
 
 *Angular:*
 
 ```html
 <div *ngIf="isActive">Is active</div>
+```
+
+*JSX:*
+
+```
+isActive && <div>Is active</div>
 ```
 
 *Hyperscript:*
@@ -139,11 +202,20 @@ m('div',
 isActive && h('div', 'Is active')
 ```
 
-### `if` ... `else`
+## `if` ... `else`
 
 *Angular:*
 
 (See `swtich` below.)
+
+*JSX:*
+
+```
+<div>isAlive
+    ? <p class="green">The hero is alive.</p>
+    : <p class="red">The hero is dead.</p>
+</div>
+```
 
 *Hyperscript:*
 
@@ -154,7 +226,7 @@ h('div', isAlive
 )
 ```
 
-### `switch`
+## `switch`
 
 *Angular:*
 
@@ -165,6 +237,17 @@ h('div', isAlive
     <confused-hero *ngSwitchCase="'confused'" [hero]="hero"></confused-hero>
     <unknown-hero *ngSwitchDefault [hero]="hero"></unknown-hero>
 </div>
+```
+
+*JSX:*
+
+```
+<div>{
+    hero.emotion === 'happy' ? <happyHero hero={hero}/>
+    : hero.emotion === 'sad' ? <sadHero hero={hero}/>
+    : hero.emotion === 'confused' ? <confusedHero hero={hero}/>
+    : <unknownHero hero={hero}/>
+}</div>
 ```
 
 *Hyperscript:*
@@ -178,12 +261,18 @@ h('div',
 )
 ```
 
-### `null` object testing
+## `null` object testing
 
 *Angular:*
 
 ```html
 <p>The hero's name is {{hero?.name}}</p>
+```
+
+*JSX:*
+
+```
+<p>The hero's name is {hero ? hero.name : ''}</p>
 ```
 
 *Hyperscript:*
